@@ -1,7 +1,16 @@
 import React from 'react';
-import Header from './Header';
 
 const App = function(){
-    return (<Header />);
+    return (
+    <div className="grid-container">
+        <header>
+            <h1><a href="/">Yet Another Notes PWA.</a></h1>
+        </header>
+
+        <aside></aside>
+        
+        <textarea id="editor" contentEditable></textarea>
+        <footer></footer>
+    </div>);
 }
 export default App;
