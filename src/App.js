@@ -1,4 +1,5 @@
 import React from 'react';
+import NoteList from './components/NoteList';
 
 const App = function(){
     return (
@@ -7,7 +8,7 @@ const App = function(){
             <h1><a href="/">Yet Another Notes PWA.</a></h1>
         </header>
 
-        <aside></aside>
+        <NoteList/>
         
         <textarea id="editor" contentEditable></textarea>
         <footer></footer>
