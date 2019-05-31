@@ -1,13 +1,8 @@
 import React from 'react';
 
 const CreateNoteButton = function(props) {
-    function handleClick(e) {
-        e.preventDefault();
-        alert("Clicked!");        
-    };
-
     return (
-    <div className="createNoteButton" onClick={handleClick}>
+    <div className="createNoteButton" onClick={props.createNoteHandler}>
         NEW NOTE
     </div>);
 };

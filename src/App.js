@@ -22,10 +22,18 @@ class App extends React.Component {
         };
         this.changeActiveNote = this.changeActiveNote.bind(this);
         this.saveNote = this.saveNote.bind(this);
+        this.createNote = this.createNote.bind(this);
     };
+    createNote(){
+        let Notes = [...this.state.Notes];
+        Notes[Object.keys(Notes).length] = {id: Object.keys(Notes).length+1, data: ""};
+        console.log(Notes);
+        this.setState({"Notes": Notes});
+    }
     componentDidMount(){
         document.getElementById("editor").value = this.state.Notes[this.state.activeNote-1].data;
-    }
+    };
+
     changeActiveNote(noteID) {
         let editor = document.getElementById('editor');
         editor.value = this.state.Notes[noteID-1].data;
@@ -35,9 +43,9 @@ class App extends React.Component {
 
     saveNote() {
         let editor = document.getElementById('editor');
-        let notes = {...this.state.Notes};
-        notes[this.state.activeNote-1].data = editor.value;
-        this.setState({notes});
+        let Notes = [...this.state.Notes];
+        Notes[this.state.activeNote-1].data = editor.value;
+        this.setState({"Notes": Notes}, ()=>console.log(this.state));
     };
 
     render() {
@@ -50,7 +58,8 @@ class App extends React.Component {
             <NoteList 
                 notesData={this.state.Notes} 
                 activeNote={this.state.activeNote} 
-                clickHandler={this.changeActiveNote}/>
+                clickHandler={this.changeActiveNote}
+                createNoteHandler={this.createNote}/>
             
             <textarea id="editor"></textarea>
             <footer>

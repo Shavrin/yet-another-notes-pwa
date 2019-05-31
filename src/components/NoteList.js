@@ -17,7 +17,7 @@ const NoteList = function(props){
     return (
         <aside>
             {Notes}
-            <CreateNoteButton/>
+            <CreateNoteButton createNoteHandler={props.createNoteHandler}/>
         </aside>
     );
 }
