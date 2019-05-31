@@ -1,5 +1,6 @@
 import React from 'react';
 import NoteList from './components/NoteList';
+import SaveButton from './components/SaveButton';
 
 class App extends React.Component {
     constructor(){
@@ -20,6 +21,7 @@ class App extends React.Component {
                 "activeNote": 1
         };
         this.changeActiveNote = this.changeActiveNote.bind(this);
+        this.saveNote = this.saveNote.bind(this);
     };
 
     changeActiveNote(noteID) {
@@ -29,6 +31,13 @@ class App extends React.Component {
         this.setState({"activeNote": noteID});
     };
 
+    saveNote() {
+        let editor = document.getElementById('editor');
+        let notes = {...this.state.Notes};
+        notes[this.state.activeNote-1].data = editor.value;
+        this.setState({notes});
+    };
+
     render() {
         return (
         <div className="grid-container">
@@ -36,10 +45,15 @@ class App extends React.Component {
                 <h1><a href="/">Yet Another Notes PWA.</a></h1>
             </header>
 
-            <NoteList notesData={this.state.Notes} activeNote={this.state.activeNote} clickHandler={this.changeActiveNote}/>
+            <NoteList 
+                notesData={this.state.Notes} 
+                activeNote={this.state.activeNote} 
+                clickHandler={this.changeActiveNote}/>
             
             <textarea id="editor"></textarea>
-            <footer></footer>
+            <footer>
+                <SaveButton saveNote={this.saveNote}/>
+            </footer>
         </div>);
     }
 }
