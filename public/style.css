@@ -86,7 +86,16 @@ footer {
     background-color: lightgreen;
     cursor: pointer;
 }
-@media(min-width: 500px) {
+
+.note.active {
+    background-color: white;
+}
+
+.note.active:hover {
+    background-color: lightgrey;
+}
+
+@media(min-width: 700px) {
     .grid-container {
         grid-template-rows: 1fr 8fr 1fr;
         grid-template-columns: 1fr 2fr;
