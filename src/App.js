@@ -23,6 +23,9 @@ class App extends React.Component {
     };
 
     changeActiveNote(noteID) {
+        let editor = document.getElementById('editor');
+        editor.value = this.state.Notes[noteID-1].data;
+
         this.setState({"activeNote": noteID});
     };
 
