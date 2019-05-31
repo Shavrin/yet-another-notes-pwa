@@ -23,7 +23,9 @@ class App extends React.Component {
         this.changeActiveNote = this.changeActiveNote.bind(this);
         this.saveNote = this.saveNote.bind(this);
     };
-
+    componentDidMount(){
+        document.getElementById("editor").value = this.state.Notes[this.state.activeNote-1].data;
+    }
     changeActiveNote(noteID) {
         let editor = document.getElementById('editor');
         editor.value = this.state.Notes[noteID-1].data;
