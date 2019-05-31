@@ -1,18 +1,11 @@
 import React from 'react';
 
-class Note extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'active': this.props.active
-        };
-    };
-    
+class Note extends React.Component {    
     render(){
-        const classes = "note" + (this.state.active ? " active" : "");
-
+        const classes = "note" + (this.props.active ? " active" : "");
+        console.log(classes);
         return(
-            <div className={classes} onClick={() => {console.log(this.props.children)}}>
+            <div className={classes} onClick={() => this.props.clickHandler(this.props.noteID)}>
                 <p className="noteTitle">{this.props.children}</p>
             </div>);
     };

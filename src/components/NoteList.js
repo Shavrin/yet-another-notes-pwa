@@ -5,7 +5,11 @@ import CreateNoteButton from './CreateNoteButton';
 const NoteList = function(props){
 
     const Notes = props.notesData.map(note => 
-        <Note key={note.id} active={(note.id===1 ? true : false)}>
+        <Note 
+        key={note.id} 
+        clickHandler={props.clickHandler}
+        noteID={note.id} 
+        active={(note.id===props.activeNote ? true : false)}>
             {`${note.id}. ${note.data}`}
         </Note>
     );

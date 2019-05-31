@@ -16,9 +16,16 @@ class App extends React.Component {
                 {
                     id: 3,
                     data: "this is a third note"
-                }]
-        }
+                }],
+                "activeNote": 1
+        };
+        this.changeActiveNote = this.changeActiveNote.bind(this);
     };
+
+    changeActiveNote(noteID) {
+        this.setState({"activeNote": noteID});
+    };
+
     render() {
         return (
         <div className="grid-container">
@@ -26,7 +33,7 @@ class App extends React.Component {
                 <h1><a href="/">Yet Another Notes PWA.</a></h1>
             </header>
 
-            <NoteList notesData={this.state.Notes}/>
+            <NoteList notesData={this.state.Notes} activeNote={this.state.activeNote} clickHandler={this.changeActiveNote}/>
             
             <textarea id="editor"></textarea>
             <footer></footer>
